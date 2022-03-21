@@ -1,0 +1,154 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(255, 247, 238);
+}
+
+#myChart {
+  margin-top: 2rem;
+  width: 40vw;
+  height: 40vh;
+}
+
+.mainBody {
+  margin: 2rem;
+}
+
+.mainBody p {
+  font-family: "Fjalla One", sans-serif;
+}
+
+h1 {
+  font-family: "Fjalla One", sans-serif;
+  font-size: 3rem;
+}
+
+h3 {
+  font-family: "Fjalla One", sans-serif;
+}
+
+form {
+  margin-top: 2rem;
+  width: 24rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.labels {
+  display: flex;
+  flex-direction: column;
+  font-family: "Fjalla One", sans-serif;
+  font-size: 1.5rem;
+}
+
+.labels label {
+  margin: 0.5rem;
+}
+
+.selections {
+  display: flex;
+  flex-direction: column;
+}
+
+.selections * {
+  margin: 0.5rem;
+  padding-left: 0.5rem;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  border-width: thin;
+  width: 12rem;
+}
+
+.selections input {
+  text-align: right;
+}
+
+.addFood {
+  margin-top: 0.5rem;
+  padding: 1rem;
+  width: 15rem;
+  height: 4rem;
+  font-family: "Fjalla One", sans-serif;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  border-style: groove;
+  border-width: medium;
+  background-color: burlywood;
+  box-shadow: 3px 3px 5px rgb(74, 74, 74), -2px 2px 5px rgb(74, 74, 74);
+  transition: 0.2s;
+}
+
+.addFood:active {
+  transition: 0.2s;
+  box-shadow: 1px 1px 3px rgb(74, 74, 74), -1px 2px 3px rgb(74, 74, 74);
+  transform: translateY(3px);
+  border-style: inset;
+  border-width: medium;
+}
+
+section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.itsaCalorieCount {
+  margin-top: 4rem;
+  height: 6rem;
+  width: 40rem;
+  background-color: chocolate;
+  font-family: "Fjalla One", sans-serif;
+  font-size: 2rem;
+  border-radius: 5px;
+  border-color: rgb(136, 70, 22);
+  border-style: solid;
+  border-width: medium;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.itsaFoodLog {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 100%;
+  gap: 1rem;
+}
+
+.sampleItem {
+  margin: 1rem;
+  width: 18rem;
+  height: 10rem;
+  padding: 1rem;
+  background-color: rgb(184, 255, 213);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: rgb(59, 164, 103);
+  border-width: medium;
+}
+
+.sampleItem h3 {
+  margin: 0.5rem;
+}
+
+.healthInfo {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem;
+}
+
+.healthInfo p {
+  padding: 0 1rem 0.2rem;
+}

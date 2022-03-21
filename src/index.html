@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Food Tracker</title>
+  </head>
+  <body>
+    <main class="mainBody">
+      <h1>Welcome to the food tracker</h1>
+      <p>This will help track your caloric intake or something.</p>
+      <div class="itsaForm">
+        <form>
+          <div class="labels">
+            <label for="foodInput">Select your food</label>
+            <label for="carbsInput">Carbohydrates</label>
+            <label for="fatInput">Fats</label>
+            <label for="proInput">Protein</label>
+          </div>
+          <div class="selections">
+            <select name="foodSelect" id="foodInput">
+              <option selected="selected">Select a food</option>
+              <option value="pizza">Pizza</option>
+              <option value="burger">Burger</option>
+              <option value="sandwich">Sandwich</option>
+              <option value="pasta">Pasta</option>
+              <option value="rice">Rice</option>
+              <option value="sushi">Sushi</option>
+              <option value="banana">Banana</option>
+            </select>
+            <input type="number" id="carbsInput" placeholder="0g" />
+            <input type="number" id="fatInput" placeholder="0g" />
+            <input type="number" id="proInput" placeholder="0g" />
+          </div>
+          <button type="submit" class="addFood">Add food item</button>
+        </form>
+      </div>
+      <div class="itsaChart">
+        <canvas id="myChart"></canvas>
+      </div>
+      <section>
+        <div class="itsaCalorieCount">
+          <p>
+            You have consumed <span class="totalCalories"> </span> calories.
+          </p>
+        </div>
+        <div class="itsaFoodLog"></div>
+      </section>
+    </main>
+  </body>
+  <script type="module" src="apps.js"></script>
+</html>

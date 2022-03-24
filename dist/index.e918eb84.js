@@ -468,6 +468,9 @@ const form = document.querySelector("form");
 const totalCalories = document.querySelector(".totalCalories");
 const foodLog = document.querySelector(".itsaFoodLog");
 let myChart;
+const getTotalCalories = (carbs, fat, protein)=>{
+    return Number(carbs) * 4 + Number(fat) * 9 + Number(protein) * 4;
+};
 // snackbar.show(result); Use for later
 const chartMaker = (carbs, fat, protein)=>{
     myChart = new _autoDefault.default(ctx, {
@@ -534,15 +537,18 @@ const foodInfo = ()=>{
         let totalFat = 0;
         let totalProtein = 0;
         if (data.documents) {
-            data.documents.forEach((item)=>{
-                totalCarbs = Number(item.fields.carbs.integerValue) + totalCarbs;
-                totalFat = Number(item.fields.fat.integerValue) + totalFat;
-                totalProtein = Number(item.fields.protein.integerValue) + totalProtein;
-                let calorieTotal = Number(totalCarbs) * 4 + Number(totalFat) * 9 + Number(totalProtein) * 4;
-                totalCalories.innerHTML = `${calorieTotal}`;
+            data.documents.forEach(({ fields: { carbs , fat , protein  }  })=>{
+                let carbNumber = Number(carbs.integerValue);
+                let fatNumber = Number(fat.integerValue);
+                let proNumber = Number(protein.integerValue);
+                totalCarbs = carbNumber + totalCarbs;
+                totalFat = fatNumber + totalFat;
+                totalProtein = proNumber + totalProtein;
+                totalCalories.innerHTML = `${getTotalCalories(totalCarbs, totalFat, totalProtein)}`;
             });
             chartMaker(totalCarbs, totalFat, totalProtein);
-            foodLog.innerHTML = data.documents.map((item)=>`<div class="sampleItem">\n       <h3>${item.fields.foodInput.stringValue}</h3>\n       <p> Total kcal</p>\n       <div class="healthInfo">\n              <div class="carbs">\n                <p>Carbs</p>\n                <p>${item.fields.carbs.integerValue} g</p>\n              </div>\n              <div class="fat">\n                <p>Fat</p>\n                <p>${item.fields.fat.integerValue} g</p>\n              </div>\n              <div class="protein">\n                <p>Protein</p>\n                <p>${item.fields.protein.integerValue} g</p>\n              </div>\n            </div>\n     </div>`
+            foodLog.innerHTML = data.documents.map(({ // fields: { carbs: { integerValue: carbValue }, fat: { integerValue: fatValue }, protein: { integerValue: proValue }, foodInput: { stringValue: foodValue } },  destructuring down to smallest level, replaces need for carbs.integervalue etc etc
+            fields: { carbs , fat , protein , foodInput  } ,  })=>`<div class="sampleItem">\n       <h3>${foodInput.stringValue}</h3>\n       <p> Total ${getTotalCalories(carbs.integerValue, fat.integerValue, protein.integerValue)} kcal</p>\n       <div class="healthInfo">\n              <div class="carbs">\n                <p>Carbs</p>\n                <p>${carbs.integerValue} g</p>\n              </div>\n              <div class="fat">\n                <p>Fat</p>\n                <p>${fat.integerValue} g</p>\n              </div>\n              <div class="protein">\n                <p>Protein</p>\n                <p>${protein.integerValue} g</p>\n              </div>\n            </div>\n     </div>`
             ).join("");
         }
     });
